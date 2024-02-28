@@ -1,0 +1,25 @@
+.quote {
+    font-style: oblique;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center; /* Align text to the center */
+    margin: 0 auto; /* Center the blockquote horizontally */
+}
+
+.quote::before,
+.quote::after {
+    font-size: 1.5em; /* Increase the size of the quotation marks */
+}
+
+.quote::before {
+    content: open-quote;
+}
+
+.quote::after {
+    content: close-quote;
+}
+
+.author {
+    text-align: right;
+    font-style: italic;
+    margin-right: 5rem;
+}

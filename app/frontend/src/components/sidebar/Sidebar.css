@@ -1,0 +1,31 @@
+.description {
+    margin-top: 1%;
+    margin-bottom: 5%;
+    font-size: small;
+    background-color: gainsboro;
+    padding: 3%;
+    font-style: normal;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.link-item {
+    background-color: white ;
+    font-weight: 600;
+}
+
+.link-text {
+    color: black;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.link-text:hover {
+    background-color: rgb(57, 128, 209);
+    color: whitesmoke;
+}
+
+
+.link-item:hover .link-text {
+    color: whitesmoke;
+}
