@@ -29,6 +29,9 @@ function Sidebar({ show, onHide }) {
           <a href="/add-book-review" className="link-item">
             <div className="link-text">Add book review</div>
           </a>
+          <a href="/collapsible-form" className="link-item">
+            <div className="link-text">Collapsible form</div>
+          </a>
         </Offcanvas.Body>
       </Offcanvas>
     </>

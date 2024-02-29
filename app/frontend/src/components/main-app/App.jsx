@@ -6,6 +6,7 @@ import AppNavbar from "../navbar/AppNavbar.jsx";
 import AddBookReview from "../add-book-review/AddBookReview.jsx";
 import BookList from "../book-list/BookList.jsx";
 import Login from "../login/Login.jsx";
+import CollapsibleForm from "../collapsible-form/CollapsibleForm.jsx";
 import { Route, Routes } from "react-router-dom";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/add-book-review" element={<AddBookReview />} />
           <Route path="/book-list" element={<BookList />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/collapsible-form" element={<CollapsibleForm />} />
         </Routes>
       </div>
     </div>

@@ -11,8 +11,12 @@ from db.init_db import create_db
 from db.session import get_db
 from sqlmodel import Session
 from fastapi.middleware.cors import CORSMiddleware
+from api.routes import users
 
 app = FastAPI()
+
+
+app.include_router(users.router)
 
 # Add CORS middleware
 app.add_middleware(
@@ -101,9 +105,7 @@ async def _surface_plot():
 
 # Define your route for retrieving paginated data
 @app.get("/book_ratings", response_model=Page[BookRating])
-async def get_all_book_ratings(
-    page: int = Query(1), size: int = Query(10), db: Session = Depends(get_db)
-):
+async def get_all_book_ratings(db: Session = Depends(get_db)):
     items = db.query(BookRating).all()
     return paginate(items)
 

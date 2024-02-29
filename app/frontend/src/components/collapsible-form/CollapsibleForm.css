@@ -1,0 +1,23 @@
+.collapsible-form {
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    border-radius: 25px; /* Half of height for pill shape */
+    background-color: #f0f0f0;
+    overflow: hidden;
+    transition: width 1s ease, height 1s ease;
+  }
+  
+  .collapsible-form.open {
+    width: auto; /* Expand to fit content */
+    height: auto; /* Expand to fit content */
+  }
+  
+  .collapsible-form-header {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .collapsible-form-content {
+    padding: 30px;
+  }
+  
