@@ -7,6 +7,7 @@ import AddBookReview from "../add-book-review/AddBookReview.jsx";
 import BookList from "../book-list/BookList.jsx";
 import Login from "../login/Login.jsx";
 import CollapsibleForm from "../collapsible-form/CollapsibleForm.jsx";
+import DocsComponent from "../ApiDocComponent/ApiDocComponent.jsx";
 import { Route, Routes } from "react-router-dom";
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/book-list" element={<BookList />} />
           <Route path="/login" element={<Login />} />
           <Route path="/collapsible-form" element={<CollapsibleForm />} />
+          <Route path="/api-docs" element={<DocsComponent />} />
         </Routes>
       </div>
     </div>

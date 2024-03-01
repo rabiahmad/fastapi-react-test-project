@@ -28,6 +28,7 @@ const AppNavbar = () => {
           <Nav className="me-auto">
             <Nav.Link href="/">Quote</Nav.Link>
             <Nav.Link href="/accordian">Features</Nav.Link>
+            <Nav.Link href="/api-docs">API Docs</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
           </Nav>
         </Container>

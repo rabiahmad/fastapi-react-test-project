@@ -1,4 +1,6 @@
+from multiprocessing import Value
 from fastapi import APIRouter, Depends
+from fastapi.utils import deep_dict_update
 from models.user import User, UserCreate, UpdateUserRequest
 from crud.user import UserCRUD
 from db.session import get_db
@@ -45,6 +47,17 @@ async def get_user(id: int, db: Session = Depends(get_db)):
 
 
 @router.put("/user/{id}")
-async def update_user(id: int, data: UpdateUserRequest):
+async def update_user(id: int, data: UpdateUserRequest, db: Session = Depends(get_db)):
     """Update a user information"""
-    return {"user_id": id, "updated_fields": data}
+    updated_user = UserCRUD.update(id, data, db)
+    return updated_user
+
+
+@router.delete("/user/{id}")
+async def delete_user(id: int, db: Session = Depends(get_db)):
+    """Delete a user for a given user id"""
+    try:
+        deleted_user = UserCRUD.delete(id, db)
+        return deleted_user, "successfully deleted"
+    except Exception as error_message:
+        return f"{error_message}"

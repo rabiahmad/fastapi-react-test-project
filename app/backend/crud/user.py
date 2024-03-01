@@ -1,7 +1,6 @@
-from models.user import User, UserResponse
-from typing import List, Optional, Generator, Any
-from sqlmodel import Session, select
-from db.session import get_db
+from models.user import User, UserResponse, UpdateUserRequest
+from typing import List, Optional
+from sqlmodel import Session
 from sqlalchemy.exc import OperationalError
 
 
@@ -36,21 +35,29 @@ class UserCRUD:
             return user
 
     @staticmethod
-    def update(user_id: int, user: User, db: Session) -> Optional[User]:
+    def update(
+        user_id: int, user: UpdateUserRequest, db: Session
+    ) -> Optional[UserResponse]:
         with db as session:
             db_user = session.get(User, user_id)
             if db_user:
-                for attr, value in user.dict(exclude_unset=True).items():
+                for attr, value in user.model_dump(exclude_unset=True).items():
                     setattr(db_user, attr, value)
                 session.commit()
                 session.refresh(db_user)
-            return db_user
+                user_response = UserResponse(**db_user.__dict__)
+                return user_response
+            else:
+                raise ValueError("User does not exist")
 
     @staticmethod
-    def delete(user_id: int, db: Session) -> Optional[User]:
+    def delete(user_id: int, db: Session) -> Optional[UserResponse]:
         with db as session:
             db_user = session.get(User, user_id)
             if db_user:
                 session.delete(db_user)
                 session.commit()
-            return db_user
+                user_response = UserResponse(**db_user.__dict__)
+                return user_response
+            else:
+                raise ValueError("User does not exist")

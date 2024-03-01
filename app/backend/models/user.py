@@ -1,14 +1,13 @@
-from typing_extensions import ReadOnly
 from sqlmodel import SQLModel, Field
-from pydantic import BaseModel, validator, PrivateAttr
+from pydantic import BaseModel, validator
 from typing import Optional
 
 
 class User(SQLModel, table=True):
-    id: int = Field(primary_key=True)
+    id: Optional[int] = Field(primary_key=True, default=None)
     first_name: str
     last_name: str
-    username: str
+    username: Optional[str]
     email: str
     password: str
 
@@ -17,7 +16,7 @@ class UserCreate(BaseModel):
     first_name: str
     last_name: str
     email: str
-    username: Optional[str]
+    username: Optional[str] = None
     password: str
     password_confirm: str
 
@@ -41,7 +40,7 @@ class UserResponse(BaseModel):
 
 
 class UpdateUserRequest(BaseModel):
-    first_name: Optional[str]
-    last_name: Optional[str]
-    username: Optional[str]
-    email: Optional[str]
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    username: Optional[str] = None
+    email: Optional[str] = None
